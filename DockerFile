@@ -14,7 +14,9 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy the Python test script
 COPY test_chrome.py .
+COPY test_fire.py .
+COPY test_ie.py .
 
 # Run the Python test script
-CMD ["python3", "test_chrome.py"]
+CMD ["python3", "main.py"]
 

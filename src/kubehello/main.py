@@ -1,11 +1,16 @@
-from flask import Flask
+import subprocess
 
-app = Flask(__name__)
+def main():
+    test_type = input("Enter the type of test (chrome/firefox/ie): ")
 
-@app.route('/')
-def hello():
-    return "hello kube!"
+    if test_type == "chrome":
+        subprocess.run(["python", "test_chrome.py"])
+    elif test_type == "firefox":
+        subprocess.run(["python", "test_firefox.py"])
+    elif test_type == "ie":
+        subprocess.run(["python", "test_ie.py"])
+    else:
+        print("Invalid test type specified.")
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
-
+if __name__ == "__main__":
+    main()
