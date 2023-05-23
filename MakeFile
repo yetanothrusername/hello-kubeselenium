@@ -1,0 +1,15 @@
+KUBECTL := kubectl
+
+.PHONY: deploy-selenium
+
+deploy-selenium:
+    $(KUBECTL) create namespace selenium || true
+    $(KUBECTL) apply -f selenium-hub-deployment.yaml -n selenium
+    $(KUBECTL) apply -f selenium-hub-service.yaml -n selenium
+    $(KUBECTL) apply -f selenium-node-chrome-deployment.yaml -n selenium
+    $(KUBECTL) apply -f selenium-node-chrome-service.yaml -n selenium
+    $(KUBECTL) apply -f selenium-node-firefox-deployment.yaml -n selenium
+    $(KUBECTL) apply -f selenium-node-firefox-service.yaml -n selenium
+    $(KUBECTL) apply -f selenium-node-ie-deployment.yaml -n selenium
+    $(KUBECTL) apply -f selenium-node-ie-service.yaml -n selenium
+
