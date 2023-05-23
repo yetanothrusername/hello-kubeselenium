@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-node-ie
+  labels:
+    app: selenium
+    component: node-ie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: selenium
+      component: node-ie
+  template:
+    metadata:
+      labels:
+        app: selenium
+        component: node-ie
+    spec:
+      containers:
+        - name: selenium-node-ie
+          image: selenium/node-ie:latest
+          ports:
+            - containerPort: 5555
+          env:
+            - name: HUB_HOST
+              value: selenium-hub
+            - name: HUB_PORT
+              value: "4444"
+

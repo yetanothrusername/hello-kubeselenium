@@ -1,13 +1,20 @@
-FROM python:3.9-alpine
+FROM alpine:latest
 
-WORKDIR /src
+# Install Python and pip
+RUN apk add --no-cache python3 py3-pip
 
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements file
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-COPY hellokube.py .
+# Install the dependencies
+RUN pip3 install --no-cache-dir -r requirements.txt
 
-EXPOSE 8000
+# Copy the Python test script
+COPY test_chrome.py .
 
-CMD ["python", "hellokube.py"]
+# Run the Python test script
+CMD ["python3", "test_chrome.py"]
 

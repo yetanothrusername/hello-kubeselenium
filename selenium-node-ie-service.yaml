@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: selenium-node-ie
+  labels:
+    app: selenium
+spec:
+  selector:
+    app: selenium
+    component: node-ie
+  ports:
+    - protocol: TCP
+      port: 5555
+      targetPort: 5555
+  type: ClusterIP
+

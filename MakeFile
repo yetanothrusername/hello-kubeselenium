@@ -1,6 +1,9 @@
 KUBECTL := kubectl
+PYTHON := python3
+PIP_COMPILE := pip-compile
+PIP_SYNC := pip-sync
 
-.PHONY: deploy-selenium
+.PHONY: deploy-selenium test-chrome test-firefox test-ie
 
 deploy-selenium:
     $(KUBECTL) create namespace selenium || true
@@ -12,4 +15,19 @@ deploy-selenium:
     $(KUBECTL) apply -f selenium-node-firefox-service.yaml -n selenium
     $(KUBECTL) apply -f selenium-node-ie-deployment.yaml -n selenium
     $(KUBECTL) apply -f selenium-node-ie-service.yaml -n selenium
+
+test-chrome:
+    $(PYTHON) test_chrome.py
+
+test-firefox:
+    $(PYTHON) test_firefox.py
+
+test-ie:
+    $(PYTHON) test_ie.py
+
+requirements.ini: requirements.txt
+    $(PIP_COMPILE) --output-file requirements.ini requirements.txt
+
+sync-requirements: requirements.ini
+    $(PIP_SYNC) requirements.ini
 
