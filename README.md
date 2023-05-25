@@ -1,6 +1,7 @@
-# Hello KubeWorld!
+# Hello KubeSelenium!
 
-This project is to learn more about kubernetes and how to use it for devsecops
+This project is to learn more about kubernetes and how to use it for devsecops CI testing with Selenium!
+Selenium is great for all kinds of fun so this hello world will be a good starting place to learn
 
 # Prerequisites
 Before proceeding, ensure that you have the following prerequisites set up:
