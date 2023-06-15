@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: selenium-xss
+  name: selenium
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-xss
+      app: selenium
   template:
     metadata:
       labels:
-        app: hello-xss
+        app: selenium
     spec:
       containers:
-        - name: hello-xss
+        - name: selenium
           image: nginx
           ports:
             - containerPort: 8000
