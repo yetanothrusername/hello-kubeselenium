@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-deployment
+  name: selenium-xss
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-world
+      app: hello-xss
   template:
     metadata:
       labels:
-        app: hello-world
+        app: hello-xss
     spec:
       containers:
-        - name: hello-world
+        - name: hello-xss
           image: nginx
           ports:
             - containerPort: 8000
